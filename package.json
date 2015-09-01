@@ -1,0 +1,24 @@
+{
+  "name": "dollar2string",
+  "version": "0.0.1",
+  "description": "convert dollar amounts to their string representations",
+  "main": "index.js",
+  "scripts": {
+    "env": "env",
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coldpour/dollar2string.git"
+  },
+  "author": "coldpour",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/coldpour/dollar2string/issues"
+  },
+  "homepage": "https://github.com/coldpour/dollar2string#readme",
+  "devDependencies": {
+    "jasmine": "^2.3.2",
+    "mocha": "^2.3.0"
+  }
+}
