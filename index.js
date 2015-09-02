@@ -22,7 +22,5 @@ const spelling = {
 };
 
 module.exports = function(stringOfNumbers) {
-  const spellingValue = spelling['stringOfNumbers'];
-  console.log(spellingValue);
-  return spellingValue || stringOfNumbers;
+  return spelling[stringOfNumbers] || stringOfNumbers;
 };

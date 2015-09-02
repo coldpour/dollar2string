@@ -7,7 +7,7 @@ describe('index.js', function() {
     });
 
     it('returns strings', function() {
-      expect(i('2')).toBe('2');
+      expect(i('he')).toBe('he');
     });
 
     it('returns bigger numbers', function() {
@@ -16,8 +16,12 @@ describe('index.js', function() {
   });
 
   describe('when the input is in the map', function() {
-    it('returns the spelling', function() {
+    it('returns the spelling of numbers', function() {
       expect(i(2)).toBe('two');
+    });
+
+    it('returns the spelling of strings', function() {
+      expect(i('2')).toBe('two');
     });
   });
 });
