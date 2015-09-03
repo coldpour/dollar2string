@@ -1,27 +1,17 @@
 const i = require('../index.js');
 
 describe('index.js', function() {
-  describe('when the input is not in the map', function() {
-    it('returns the user\'s input', function() {
-      expect(i()).toBe(undefined);
+  describe('when given a string', function() {
+    it('parses dollars and cents', function() {
+      expect(i('2.34')).toBe('Two Dollars and 34/100');
     });
 
-    it('returns strings', function() {
-      expect(i('he')).toBe('he');
+    it('ignores more than two places after the decimal', function() {
+      expect(i('2.345')).toBe('Two Dollars and 34/100');
     });
 
-    it('returns bigger numbers', function() {
-      expect(i(45)).toBe(45);
-    });
-  });
-
-  describe('when the input is in the map', function() {
-    it('returns the spelling of numbers', function() {
-      expect(i(2)).toBe('two');
-    });
-
-    it('returns the spelling of strings', function() {
-      expect(i('2')).toBe('two');
+    it('ignores multiple decimal places', function() {
+      expect(i('2.3.4')).toBe('Two Dollars and 30/100');
     });
   });
 });

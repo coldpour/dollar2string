@@ -22,5 +22,24 @@ const spelling = {
 };
 
 module.exports = function(stringOfNumbers) {
-  return spelling[stringOfNumbers] || stringOfNumbers;
+  const splitString = stringOfNumbers.split('.');
+
+  const dollars = splitString[0];
+  const cents = splitString[1];
+
+  return parseDollars(dollars) + ' and ' + parseCents(cents);
+};
+
+function parseDollars(dollarsString) {
+  const spelledString = spelling[dollarsString];
+  return capitalize(spelledString) + ' Dollars';
+};
+
+function parseCents(centsString) {
+  const twoDigits = String(centsString + '00').substr(0, 2);
+  return twoDigits + '/100';
+};
+
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 };
