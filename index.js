@@ -24,10 +24,15 @@ const spelling = {
 module.exports = function(stringOfNumbers) {
   const splitString = stringOfNumbers.split('.');
 
-  const dollars = splitString[0];
-  const cents = splitString[1];
+  const dollars = onlyNumericChars(splitString[0]);
+  const cents = onlyNumericChars(splitString[1]);
 
   return parseDollars(dollars) + ' and ' + parseCents(cents);
+};
+
+function onlyNumericChars(unsanitized) {
+  const sanitized = unsanitized.replace(/[^0-9]/g, '');
+  return sanitized;
 };
 
 function parseDollars(dollarsString) {
@@ -41,5 +46,7 @@ function parseCents(centsString) {
 };
 
 function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  const first = string.charAt(0);
+  const rest = string.slice(1);
+  return first.toUpperCase() + rest;
 };

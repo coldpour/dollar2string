@@ -13,5 +13,9 @@ describe('index.js', function() {
     it('ignores multiple decimal places', function() {
       expect(i('2.3.4')).toBe('Two Dollars and 30/100');
     });
+
+    it('discards non-numeric chars', function() {
+      expect(i('&2,.a3;4')).toBe('Two Dollars and 34/100');
+    });
   });
 });
