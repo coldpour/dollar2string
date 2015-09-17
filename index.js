@@ -18,7 +18,14 @@ const spelling = {
   17: 'seventeen',
   18: 'eighteen',
   19: 'nineteen',
-  20: 'twenty'
+  20: 'twenty',
+  30: 'thirty',
+  40: 'fourty',
+  50: 'fifty',
+  60: 'sixty',
+  70: 'seventy',
+  80: 'eighty',
+  90: 'ninety'
 };
 
 module.exports = function(stringOfNumbers) {
@@ -36,8 +43,20 @@ function onlyNumericChars(unsanitized) {
 };
 
 function parseDollars(dollarsString) {
-  const spelledString = spelling[dollarsString];
-  return capitalize(spelledString) + ' Dollars';
+  var spelledDollars;
+  
+  if('20' >= dollarsString) {
+    const spelledString = spelling[dollarsString];
+    spelledDollars = capitalize(spelledString);
+  } else {
+    const tens = dollarsString.charAt(0) + '0';
+    const ones = dollarsString.charAt(1);
+
+    const spelled_tens = capitalize(spelling[tens]);
+    const spelled_ones = capitalize(spelling[ones]);
+    spelledDollars = spelled_tens + ' ' + spelled_ones;
+  }
+  return spelledDollars + ' Dollars';
 };
 
 function parseCents(centsString) {
